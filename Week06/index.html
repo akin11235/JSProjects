@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB6 Example</title>
+</head>
+<body>
+    <h1>M2N: Willowdale, North York</h1>
+
+    <table>
+        <caption>Cases by Age Group for FSA</caption>
+        <!-- Header at the top -->
+        <thead>
+        <tr>
+            <th>Age Group</th>
+            <th>Cases</th>
+        </tr>
+    </thead>
+</tfoot>
+
+<!-- All the rows in the body -->
+    <tbody>
+        <tr>
+    
+            <td>Unknown</td>
+            <td>12</td>
+        </tr>
+        <tr>function Chart (){
+    
+        }
+            <td>15</td>
+        </tr>
+
+        <tr>
+    
+            <td>30-39</td>
+            <td>37</td>
+        </tr>
+
+    </tbody>
+
+    <!-- All the rows in the foot -->
+    <tfoot>
+        <tr>
+            <th colspan="2"><a href="">Toronto public data</a></th>
+          
+        </tr>
+    </tfoot>
+    </table>
+
+    <canvas id="chart"></canvas>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.js"></script>
+    <script>
+        let chart = new Chart("chart", {
+            type: 'bar',
+            data:{
+                labels: [
+                    'unknown',
+                    '<19',
+                    '20-29'
+                ],
+                datasets: [{
+                    data: [1, 11, 1]
+                }]
+            }
+        });
+    </script>
+
+    <p>Dele</p>
+</body>
+</html>

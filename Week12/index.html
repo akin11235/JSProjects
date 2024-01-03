@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dog-on Cute!</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap cdn -->
+  </head>
+  <body>
+    <!-- Nav bar across the top -->
+    <div class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <span class="navbar-brand mb-0 h1">Dog-on Cute</span>
+
+      <!-- Dropdown menu for dog list -->
+      <div class="dropdown ml-auto">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="menu-dogs"
+          data-bs-toggle="dropdown"
+        >
+          Choose a Dog
+        </button>
+
+        <div
+          id="dropdown-menu"
+          class="dropdown-menu"
+          aria-labelledby="dropdownMenuButton"
+        >
+          <!-- Menu for all dots breeds -->
+
+          <!-- <a href="#" id="breed-name" class="dropdown-item">Breed Name</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Container for our dog images -->
+
+    <div class="container">
+      <!-- Name of dog breed we are showing -->
+      <h2 id="breed-name" class="my-3">&nbsp;</h2>
+
+      <!-- Grid of dog images -->
+      <div id="breed-grid">
+        <!-- Example of a row, col, img in the grid -->
+        <div class="row mt-2">
+          <div class="col">
+            <!-- Placeholder image using bootstrap -->
+            <img
+              src="https://images.dog.ceo/breeds/labrador/n02099712_610.jpg"
+              alt=""
+              class="img-fluid rounded mx-auto d-block"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Helper functions -->
+    <script src="api.js"></script>
+    <script src="ui.js"></script>
+
+    <script>
+      function start() {
+        // step 1. Get all the dog breeds
+        // document.addEventListener("click", function (event) {});
+
+        getDogBreeds(function (breedList) {
+          // 2. Use the dog breed list to create drop down
+          //   console.log(breedList);
+          populateBreedDropdown(breedList);
+
+          // 3. Listen for clicks on the dropdown menu items
+
+          let dropdownMenu = document.querySelector("#dropdown-menu");
+          dropdownMenu.addEventListener("click", function (event) {
+            let dropdownItem = event.target;
+            let breed = dropdownItem.id;
+
+            //   4. Get the list of image for this breed from the dog api
+            getBreedData(breed, function (images) {
+              //   5. Update with breed title and create image
+              showBreed(breed, images);
+            });
+          });
+        });
+      }
+
+      window.onload = start;
+    </script>
+  </body>
+</html>
